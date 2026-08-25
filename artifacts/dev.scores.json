@@ -1,0 +1,28 @@
+{
+  "overall": {
+    "bleu": 0.2749,
+    "rouge_l": 0.5381,
+    "chrf": 0.5014,
+    "total": 1.314,
+    "n": 3728
+  },
+  "bn": {
+    "bleu": 0.1858,
+    "rouge_l": 0.4775,
+    "chrf": 0.4585,
+    "total": 1.121,
+    "n": 1717
+  },
+  "hi": {
+    "bleu": 0.3256,
+    "rouge_l": 0.5898,
+    "chrf": 0.5321,
+    "total": 1.448,
+    "n": 2011
+  },
+  "cross_check": {
+    "sacrebleu_bleu_x100": 27.022,
+    "sacrebleu_chrf++_x100": 50.526,
+    "nltk_bleu": 0.2672
+  }
+}

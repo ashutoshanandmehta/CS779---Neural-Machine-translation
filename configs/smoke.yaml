@@ -1,0 +1,43 @@
+# Tiny configuration used only to exercise the training/decoding plumbing on
+# CPU. It is far too small to translate anything -- see base.yaml for the real
+# run.
+
+data:
+  train: data/clean/combined/train.tsv
+  dev: data/clean/combined/dev.tsv
+  test: data/clean/combined/test.tsv
+  spm_model: spm/joint16k.model
+  max_len: 48
+
+model:
+  d_model: 128
+  n_heads: 4
+  n_enc_layers: 2
+  n_dec_layers: 2
+  d_ff: 256
+  dropout: 0.1
+  tie_embeddings: true
+
+train:
+  max_tokens: 1200
+  accum_steps: 1
+  max_steps: 40
+  warmup_steps: 20
+  lr_scale: 1.0
+  label_smoothing: 0.1
+  clip_norm: 1.0
+  betas: [0.9, 0.98]
+  eps: 1.0e-9
+  weight_decay: 0.0
+  amp: false
+  seed: 1
+  num_workers: 0
+
+eval:
+  every_steps: 20
+  patience: 8
+  probe_sentences: 3
+
+checkpoint:
+  save_dir: outs/smoke
+  keep_last: 3

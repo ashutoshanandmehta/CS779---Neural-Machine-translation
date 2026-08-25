@@ -1,0 +1,46 @@
+# Baseline configuration: one multilingual model, en -> {hi, bn}.
+#
+# Sized for 140k sentence pairs on a free-tier T4. The dropout is high and the
+# vocabulary small relative to a standard "transformer-base" recipe because
+# this is a low-resource setting -- capacity is not the binding constraint,
+# overfitting is.
+
+data:
+  train: data/clean/combined/train.tsv
+  dev: data/clean/combined/dev.tsv
+  test: data/clean/combined/test.tsv
+  spm_model: spm/joint16k.model
+  max_len: 128
+
+model:
+  d_model: 512
+  n_heads: 8
+  n_enc_layers: 6
+  n_dec_layers: 6
+  d_ff: 2048
+  dropout: 0.3
+  tie_embeddings: true
+
+train:
+  max_tokens: 8000          # padded tokens per micro-batch
+  accum_steps: 3            # effective batch ~24k tokens
+  max_steps: 40000
+  warmup_steps: 4000
+  lr_scale: 1.0             # multiplies the Noam schedule
+  label_smoothing: 0.1
+  clip_norm: 1.0
+  betas: [0.9, 0.98]
+  eps: 1.0e-9
+  weight_decay: 0.0
+  amp: true
+  seed: 1
+  num_workers: 2
+
+eval:
+  every_steps: 2000
+  patience: 8               # evals without dev-loss improvement before stopping
+  probe_sentences: 5        # G5: print this many dev translations each eval
+
+checkpoint:
+  save_dir: outs
+  keep_last: 5              # last-N are averaged before final decoding

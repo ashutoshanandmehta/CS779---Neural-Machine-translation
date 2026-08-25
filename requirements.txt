@@ -1,0 +1,33 @@
+# Original pins. These target Python 3.11/3.12 (Colab/Kaggle); torch 2.4.0 has
+# no wheel for Python 3.13+, so a local install on a newer interpreter needs
+# unpinned versions instead.
+torch==2.4.0
+torchvision==0.19.0
+torchaudio==2.4.0
+tqdm==4.66.4
+numpy==1.26.4
+pandas==2.2.3
+gensim==4.3.2
+fasttext-wheel==0.9.2
+transformers==4.44.2
+matplotlib==3.9.2
+scikit-learn==1.5.2
+sacrebleu==2.4.3
+rouge-score==0.1.2
+nltk==3.9.1
+pyyaml==6.0.2
+
+# Added for this pipeline.
+# sentencepiece was missing despite spm/ being part of the project layout.
+sentencepiece==0.2.0
+# `rouge` (pltrdy) is the package the grader's rougescore.py imports; it is a
+# different package from `rouge-score` above, and score.py mirrors its ROUGE-L
+# formula.
+rouge==1.0.1
+
+# Minimum needed to run the pipeline itself:
+#   data_prep.py, lid.py           -- stdlib only
+#   tokenizer.py                   -- sentencepiece
+#   gates.py, train.py, decode.py  -- torch, pyyaml, sentencepiece
+#   score.py                       -- stdlib (nltk/sacrebleu only for --cross-check)
+# transformers, scikit-learn, fasttext and torchvision/torchaudio are not used.

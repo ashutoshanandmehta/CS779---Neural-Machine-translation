@@ -1,0 +1,75 @@
+{
+  "config": {
+    "fold_bengali_danda": false,
+    "lid_enabled": true,
+    "min_script_ratio": 0.5,
+    "max_len_ratio": 3.0
+  },
+  "per_file": {
+    "en_bn/train": {
+      "read": 65407,
+      "normalised": 4673,
+      "dropped_length_ratio": 259,
+      "dropped_wrong_script": 69,
+      "dropped_src_equals_tgt": 3,
+      "digit_prefix_stripped": 2,
+      "dropped_duplicate": 400,
+      "kept": 64359,
+      "dropped_leaked_into_eval": 317
+    },
+    "en_bn/dev": {
+      "read": 1721,
+      "normalised": 105,
+      "dropped_length_ratio": 3,
+      "dropped_wrong_script": 1,
+      "kept": 1717
+    },
+    "en_bn/test": {
+      "read": 1721,
+      "normalised": 129,
+      "dropped_length_ratio": 5,
+      "kept": 1716
+    },
+    "en_hi/train": {
+      "read": 76759,
+      "digit_prefix_stripped": 670,
+      "normalised": 3750,
+      "dropped_wrong_script": 220,
+      "dropped_length_ratio": 265,
+      "dropped_src_equals_tgt": 14,
+      "dropped_empty_field": 1,
+      "digit_prefix_stripped_src": 2,
+      "dropped_duplicate": 536,
+      "kept": 75607,
+      "dropped_leaked_into_eval": 116
+    },
+    "en_hi/dev": {
+      "read": 2019,
+      "normalised": 88,
+      "dropped_length_ratio": 3,
+      "digit_prefix_stripped": 15,
+      "dropped_wrong_script": 5,
+      "kept": 2011
+    },
+    "en_hi/test": {
+      "read": 2019,
+      "normalised": 101,
+      "dropped_length_ratio": 10,
+      "digit_prefix_stripped": 15,
+      "dropped_wrong_script": 8,
+      "kept": 2001
+    }
+  },
+  "val_tm_coverage": {
+    "English-Bengali": {
+      "records": 9836,
+      "tm_hits": 654,
+      "pct": 6.65
+    },
+    "English-Hindi": {
+      "records": 11543,
+      "tm_hits": 443,
+      "pct": 3.84
+    }
+  }
+}
